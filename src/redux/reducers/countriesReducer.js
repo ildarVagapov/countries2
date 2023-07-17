@@ -39,12 +39,11 @@ export const countriesReducer = (state = initialState, action) => {
 
 export const loadCountries = () => (dispatch, _, { client, api }) => {
 	dispatch(setLoading())
-
 	client.get(api.ALL_COUNTRIES)
-		.then((data) => dispatch(setCountries(data)))
-		.then((err) => dispatch(setError(err.message)))
+		.then(({ data }) => dispatch(setCountries(data)))
+		.catch((err) => dispatch(setError(err.message)))
 }
 
-export const setCountries = () => ({ type: SET_COUNTRIES })
+export const setCountries = (list) => ({ type: SET_COUNTRIES, payload: list })
 export const setLoading = () => ({ type: SET_LOADING })
-export const setError = () => ({ type: SET_ERROR })
+export const setError = (err) => ({ type: SET_ERROR, payload: err })
