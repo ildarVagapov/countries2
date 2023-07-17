@@ -1,10 +1,11 @@
 import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+import { themeReducer } from './reducers/themeReducer'
 import * as api from '../config'
 import axios from 'axios'
 import thunk from 'redux-thunk'
 
 const reducers = combineReducers({
-	test: 'test'
+	theme: themeReducer,
 })
 
 const composeEnhancers = compose
