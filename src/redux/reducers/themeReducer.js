@@ -1,6 +1,6 @@
 const SET_THEME = 'SET_THEME'
 
-export const themeReducer = (state = 'light', action) => {
+export const themeReducer = (state = 'dark', action) => {
 	switch (action.type) {
 		case SET_THEME: {
 			return action.payload
