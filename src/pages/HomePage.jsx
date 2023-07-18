@@ -3,14 +3,16 @@ import { List } from '../components/List';
 import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAllCountries, selectCountriesInfo } from '../redux/selectors/countriesSelector';
+import { selectVisibalCountry, selectAllCountries, selectCountriesInfo } from '../redux/selectors/countriesSelector';
 import { useEffect } from 'react';
 import { loadCountries } from '../redux/reducers/countriesReducer';
+import { selectSearch } from '../redux/selectors/controlsSelector';
 
 export const HomePage = () => {
-	const navigate = useNavigate();
+	const search = useSelector(selectSearch)
+	const countries = useSelector(state => selectVisibalCountry(state, { search }));
 	const dispatch = useDispatch()
-	const countries = useSelector(selectAllCountries);
+	const navigate = useNavigate();
 	const { status, qty, error } = useSelector(selectCountriesInfo)
 
 	useEffect(() => {
