@@ -3,10 +3,10 @@ import { List } from '../components/List';
 import { Card } from '../components/Card';
 import { Controls } from '../components/Controls';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectVisibalCountry, selectAllCountries, selectCountriesInfo } from '../redux/selectors/countriesSelector';
+import { selectVisibalCountry, selectCountriesInfo } from '../redux/selectors/countriesSelector';
 import { useEffect } from 'react';
 import { loadCountries } from '../redux/reducers/countriesReducer';
-import { selectControls, selectSearch } from '../redux/selectors/controlsSelector';
+import { selectControls } from '../redux/selectors/controlsSelector';
 
 export const HomePage = () => {
 	const { search, region } = useSelector(selectControls)
