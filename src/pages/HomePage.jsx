@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from 'react-redux';
 import { selectVisibalCountry, selectAllCountries, selectCountriesInfo } from '../redux/selectors/countriesSelector';
 import { useEffect } from 'react';
 import { loadCountries } from '../redux/reducers/countriesReducer';
-import { selectSearch } from '../redux/selectors/controlsSelector';
+import { selectControls, selectSearch } from '../redux/selectors/controlsSelector';
 
 export const HomePage = () => {
-	const search = useSelector(selectSearch)
-	const countries = useSelector(state => selectVisibalCountry(state, { search }));
+	const { search, region } = useSelector(selectControls)
+	const countries = useSelector(state => selectVisibalCountry(state, { search, region }));
 	const dispatch = useDispatch()
 	const navigate = useNavigate();
 	const { status, qty, error } = useSelector(selectCountriesInfo)
