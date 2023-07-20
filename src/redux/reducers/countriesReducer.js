@@ -2,6 +2,7 @@ const SET_COUNTRIES = 'SET_COUNRIES'
 const SET_LOADING = 'SET_LOADING'
 const SET_ERROR = 'SET_ERROR'
 
+
 let initialState = {
 	status: 'idle',
 	error: null,

@@ -1,5 +1,6 @@
 const SET_SEARCH = 'SET_SEARCH'
 const SET_REGION = 'SET_REGION'
+const CLEAR_CONTROLE = 'CLEAR_CONTROLE'
 
 const initialState = {
 	search: '',
@@ -20,11 +21,15 @@ export const controlsReducer = (state = initialState, action) => {
 				region: action.payload
 			}
 		}
+		case CLEAR_CONTROLE: {
+			return initialState
+		}
 		default: {
 			return state
 		}
 	}
 }
 
+export const clearControle = () => ({ type: CLEAR_CONTROLE })
 export const setRegionAC = (region) => ({ type: SET_REGION, payload: region })
 export const setSearchAC = (search) => ({ type: SET_SEARCH, payload: search })

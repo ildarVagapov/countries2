@@ -6,6 +6,7 @@ import { IoMoon, IoMoonOutline } from 'react-icons/io5';
 import { Container } from './Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { setThemeAC } from '../redux/reducers/themeReducer';
+import { clearControle } from '../redux/reducers/controlsReducer';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -45,11 +46,15 @@ export const Header = () => {
 		document.body.setAttribute('data-theme', theme);
 	}, [theme]);
 
+	const handleClearControle = () => {
+		dispatch(clearControle())
+	}
+
 	return (
 		<HeaderEl>
 			<Container>
 				<Wrapper>
-					<Title>Where is the world?</Title>
+					<Title onClick={handleClearControle}>Where is the world?</Title>
 					<ModeSwitcher onClick={toogleMoon} >
 						{theme === 'light' ? (
 							<IoMoonOutline size="16px" />
