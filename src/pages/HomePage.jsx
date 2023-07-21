@@ -14,7 +14,6 @@ export const HomePage = () => {
 	const dispatch = useDispatch()
 	const navigate = useNavigate();
 	const { status, qty, error } = useSelector(selectCountriesInfo)
-
 	useEffect(() => {
 		if (!qty) {
 			dispatch(loadCountries())

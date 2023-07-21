@@ -4,7 +4,7 @@ import { Button } from '../components/Button';
 import { Info } from '../components/Info';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectDetails } from '../redux/selectors/detailsSelector';
-import { loadCountriesByName } from '../redux/reducers/detailsReducer';
+import { clearDetails, loadCountriesByName } from '../redux/reducers/detailsReducer';
 import { useEffect } from 'react';
 
 export const Details = () => {
@@ -15,6 +15,10 @@ export const Details = () => {
 
 	useEffect(() => {
 		dispatch(loadCountriesByName(name))
+
+		return () => {
+			dispatch(clearDetails())
+		}
 	}, [name, dispatch])
 
 
