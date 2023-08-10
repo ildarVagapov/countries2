@@ -11,8 +11,6 @@ const themeSlice = createSlice({
 		setTheme: (state, action) => {
 			state.theme = action.payload
 		}
-		// return { ...state, theme: action.payload }
-
 	}
 })
 
