@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 export const loadCountries = createAsyncThunk('controls/Fetching', async (_, { extra: { client, api } }) => {
-	return client.get(api.ALL_COUNTRIES)
+	return await client.get(api.ALL_COUNTRIES)
 })
 
 const initialState = {
@@ -13,11 +13,7 @@ const initialState = {
 const countriesSlice = createSlice({
 	name: 'countries',
 	initialState,
-	reducers: {
-		// setList: (state, actions) => {
-		// 	state.list = actions.payload
-		// },
-	},
+	reducers: {},
 	extraReducers: (builder) => {
 		builder
 			.addCase(loadCountries.pending, (state, action) => {
@@ -35,5 +31,4 @@ const countriesSlice = createSlice({
 	}
 })
 
-export const { setList } = countriesSlice.actions
 export const countriesReducer = countriesSlice.reducer

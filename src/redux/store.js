@@ -5,11 +5,13 @@ import * as api from '../config'
 import thunk from 'redux-thunk'
 import axios from 'axios'
 import { countriesReducer } from './slices/countriesSlice'
+import { detailsReducer } from './slices/detailsSlice'
 
 const reducer = combineReducers({
 	theme: themeReducer,
 	controlse: controlseReducer,
-	countries: countriesReducer
+	countries: countriesReducer,
+	details: detailsReducer
 })
 
 export const store = configureStore({
