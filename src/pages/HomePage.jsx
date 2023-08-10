@@ -9,21 +9,21 @@ import { loadCountries } from '../redux/reducers/countriesReducer';
 import { selectControls } from '../redux/selectors/controlsSelector';
 
 export const HomePage = () => {
-	const { search, region } = useSelector(selectControls)
-	const countries = useSelector(state => selectVisibalCountry(state, { search, region }));
-	const dispatch = useDispatch()
-	const navigate = useNavigate();
-	const { status, qty, error } = useSelector(selectCountriesInfo)
-	useEffect(() => {
-		if (!qty) {
-			dispatch(loadCountries())
-		}
-	}, [qty, dispatch])
+	// const { search, region } = useSelector(selectControls)
+	// const countries = useSelector(state => selectVisibalCountry(state, { search, region }));
+	// const dispatch = useDispatch()
+	// const navigate = useNavigate();
+	// const { status, qty, error } = useSelector(selectCountriesInfo)
+	// useEffect(() => {
+	// 	if (!qty) {
+	// 		dispatch(loadCountries())
+	// 	}
+	// }, [qty, dispatch])
 
 	return (
 		<>
 			<Controls />
-			{error && <h4>ошибка</h4>}
+			{/* {error && <h4>ошибка</h4>}
 			{status === 'loading' && <h4>Loading</h4>}
 			{status === 'received' &&
 				<List >
@@ -58,7 +58,7 @@ export const HomePage = () => {
 						})
 					}
 				</List >
-			}
+			} */}
 		</>
 	);
 };

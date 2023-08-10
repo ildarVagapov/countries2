@@ -28,21 +28,21 @@ const Wrapper = styled.div`
 `;
 
 export const Controls = () => {
-	const dispatch = useDispatch()
-	const region = useSelector(selectRegion)
-	const handleSelect = (reg) => {
-		dispatch(setRegionAC(reg?.value || ''))
-	}
+	// const dispatch = useDispatch()
+	// const region = useSelector(selectRegion)
+	// const handleSelect = (reg) => {
+	// 	dispatch(setRegionAC(reg?.value || ''))
+	// }
 	return (
 		<Wrapper>
-			<Search />
+			{/* <Search /> */}
 			<CustomSelect
 				options={options}
 				placeholder="Filter by Region"
 				isClearable
-				isSearchable={false}
-				value={optionsMap[region]}
-				onChange={handleSelect}
+			// isSearchable={false}
+			// value={optionsMap[region]}
+			// onChange={handleSelect}
 			/>
 		</Wrapper>
 	);

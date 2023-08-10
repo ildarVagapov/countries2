@@ -1,12 +1,9 @@
 import styled from 'styled-components';
-import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { IoMoon, IoMoonOutline } from 'react-icons/io5';
-
 import { Container } from './Container';
-import { useDispatch, useSelector } from 'react-redux';
-import { setThemeAC } from '../redux/reducers/themeReducer';
+import { useDispatch } from 'react-redux';
 import { clearControle } from '../redux/reducers/controlsReducer';
+import { ThemeSwitcher } from './Theme';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -29,23 +26,8 @@ const Title = styled(Link).attrs({
   font-weight: var(--fw-bold);
 `;
 
-const ModeSwitcher = styled.div`
-  color: var(--colors-text);
-  font-size: var(--fs-sm);
-  cursor: pointer;
-  // font-weight: var(--fw-bold);
-  text-transform: capitalize;
-`;
-
 export const Header = () => {
-	const theme = useSelector((state) => state.theme)
 	const dispatch = useDispatch()
-	const toogleMoon = () => dispatch(setThemeAC(theme === 'light' ? 'dark' : 'light'))
-
-	useEffect(() => {
-		document.body.setAttribute('data-theme', theme);
-	}, [theme]);
-
 	const handleClearControle = () => {
 		dispatch(clearControle())
 	}
@@ -55,14 +37,7 @@ export const Header = () => {
 			<Container>
 				<Wrapper>
 					<Title onClick={handleClearControle}>Where is the world?</Title>
-					<ModeSwitcher onClick={toogleMoon} >
-						{theme === 'light' ? (
-							<IoMoonOutline size="16px" />
-						) : (
-							<IoMoon size="16px" />
-						)}{' '}
-						<span style={{ marginLeft: '0.75rem' }}>{theme} Theme</span>
-					</ModeSwitcher>
+					<ThemeSwitcher />
 				</Wrapper>
 			</Container>
 		</HeaderEl>

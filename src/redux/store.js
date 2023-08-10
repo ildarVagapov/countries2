@@ -1,23 +1,28 @@
-import { createStore, combineReducers, compose, applyMiddleware } from 'redux'
+// import { createStorecombineReducers, compose, applyMiddleware } from 'redux'
 import * as api from '../config'
 import thunk from 'redux-thunk'
 import axios from 'axios'
-import { themeReducer } from './reducers/themeReducer'
-import { countriesReducer } from './reducers/countriesReducer'
-import { controlsReducer } from './reducers/controlsReducer'
-import { detailsReducer } from './reducers/detailsReducer'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { themeReducer } from './slices/themeSlice'
 
-const reducers = combineReducers({
-	theme: themeReducer,
-	countries: countriesReducer,
-	controls: controlsReducer,
-	details: detailsReducer
+const reducer = combineReducers({
+	theme: themeReducer
 })
 
-const composeEnhancers = compose
+export const store = configureStore({ reducer, devTools: true })
 
-export const store = createStore(reducers, composeEnhancers(
-	applyMiddleware(thunk.withExtraArgument({
-		client: axios,
-		api: api
-	}))))
+// const reducers = combineReducers({
+// 	theme: themeReducer,
+// 	countries: countriesReducer,
+// 	controls: controlsReducer,
+// 	details: detailsReducer
+// })
+
+// const composeEnhancers = compose
+
+// export const store = createStore(reducers, composeEnhancers(
+// 	applyMiddleware(thunk.withExtraArgument({
+// 		client: axios,
+// 		api: api
+// 	}))))
+
