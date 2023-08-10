@@ -50,6 +50,4 @@ export const loadCountriesByName = (name) => (dispatch, _, { client, api }) => {
 	client.get(api.searchByCountry(name))
 		.then(({ data }) => dispatch(setCountryDetails(data[0])))
 		.catch(err => dispatch(setErrorDetails(err)))
-	// .then(({ data }) => console.log(data))
-	// не забудь по эксперементировать с ({data}) - (data)
 }
