@@ -14,9 +14,13 @@ const controlseSlice = createSlice({
 		},
 		setRegion: (state, action) => {
 			state.region = action.payload
+		},
+		clearControle: (state, action) => {
+			state.search = ''
+			state.region = ''
 		}
 	}
 })
 
-export const { setSearch, setRegion } = controlseSlice.actions
+export const { setSearch, setRegion, clearControle } = controlseSlice.actions
 export const controlseReducer = controlseSlice.reducer

@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { Container } from './Container';
-import { useDispatch } from 'react-redux';
-import { clearControle } from '../redux/reducers/controlsReducer';
 import { ThemeSwitcher } from './Theme';
+import { useClear } from '../hook/useClear';
 
 const HeaderEl = styled.header`
   box-shadow: var(--shadow);
@@ -27,16 +26,13 @@ const Title = styled(Link).attrs({
 `;
 
 export const Header = () => {
-	const dispatch = useDispatch()
-	const handleClearControle = () => {
-		dispatch(clearControle())
-	}
+	const clearControle = useClear()
 
 	return (
 		<HeaderEl>
 			<Container>
 				<Wrapper>
-					<Title onClick={handleClearControle}>Where is the world?</Title>
+					<Title onClick={clearControle}>Where is the world?</Title>
 					<ThemeSwitcher />
 				</Wrapper>
 			</Container>

@@ -26,6 +26,7 @@ const Wrapper = styled.div`
 
 export const Controls = () => {
 	const [region, handleSelect] = useRegion()
+
 	return (
 		<Wrapper>
 			<Search />
