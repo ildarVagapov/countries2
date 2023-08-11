@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { BordersList } from './BordersList';
 
 const Wrapper = styled.section`
   margin-top: 3rem;
@@ -55,36 +56,6 @@ const ListItem = styled.li`
   }
 `;
 
-const Meta = styled.div`
-  margin-top: 3rem;
-  display: flex;
-  gap: 1.5rem;
-  flex-direction: column;
-  align-items: flex-start;
-
-  & > b {
-    font-weight: var(--fw-bold);
-  }
-
-  @media (min-width: 767px) {
-    flex-direction: row;
-    align-items: center;
-  }
-`;
-
-const TagGroup = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-`;
-
-const Tag = styled.span`
-  padding: 0 1rem;
-  background-color: var(--colors-ui-base);
-  box-shadow: var(--shadow);
-  line-height: 1.5;
-  cursor: pointer;
-`;
 
 export const Info = (props) => {
 	const {
@@ -105,7 +76,6 @@ export const Info = (props) => {
 	return (
 		<Wrapper>
 			<InfoImage src={flag} alt={name} />
-
 			<div>
 				<InfoTitle>{name}</InfoTitle>
 				<ListGroup>
@@ -147,20 +117,7 @@ export const Info = (props) => {
 						</ListItem>
 					</List>
 				</ListGroup>
-				<Meta>
-					<b>Border Countries</b>
-					{!borders.length ? (
-						<span>There is no border countries</span>
-					) : (
-						<TagGroup>
-							{borders.map((b) => (
-								<Tag key={b} onClick={() => push(`/country/${b}`)}>
-									{b}
-								</Tag>
-							))}
-						</TagGroup>
-					)}
-				</Meta>
+				<BordersList borders={borders} push={push} />
 			</div>
 		</Wrapper>
 	);

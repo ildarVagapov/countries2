@@ -4,17 +4,23 @@ export const loadCountriesByName = createAsyncThunk('details/Fetch', (name, { ex
 	return client.get(api.searchByCountry(name))
 })
 
+export const loadingNeighborsByBorder = createAsyncThunk('details/FetchBorder', (code, { extra: { client, api } }) => {
+	// debugger
+	return client.get(api.filterByCode(code))
+})
+
 const initialState = {
 	status: 'idle',
 	error: null,
-	currentCountry: null
+	currentCountry: null,
+	neighbors: []
 }
 
 const detailsSlice = createSlice({
 	name: 'details',
 	initialState,
 	reducers: {
-		clearDetails: (_, action) => action.payload
+		clearDetails: (_, action) => initialState
 	},
 	extraReducers: (builder) => {
 		builder
@@ -29,6 +35,10 @@ const detailsSlice = createSlice({
 			.addCase(loadCountriesByName.rejected, (state, action) => {
 				state.status = 'rejected'
 				state.error = action.payload || action.error.message
+			})
+			.addCase(loadingNeighborsByBorder.fulfilled, (state, action) => {
+				state.status = 'idle'
+				state.neighbors = action.payload.data // Обновляем состояние соседей
 			})
 	}
 })

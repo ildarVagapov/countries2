@@ -5,10 +5,9 @@ import { List } from "./List";
 
 export const CountriesList = () => {
 	const [countries, navigate, { status, error }] = useCountries()
-
 	return (
 		<>
-			{error && <h4>ошибка</h4>}
+			{error && <h4>{error}</h4>}
 			{status === 'loading' && <h4>Loading</h4>}
 			{status === 'received' &&
 				<List >
